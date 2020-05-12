@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, {
+  useState, forwardRef, useImperativeHandle,
+} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -20,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ description, children }) {
+const TransitionsModal = forwardRef(({ description, children }, ref) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -31,6 +34,12 @@ export default function TransitionsModal({ description, children }) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useImperativeHandle(ref, () => ({
+    handleClose() {
+      setOpen(false);
+    },
+  }));
 
   return (
     <div>
@@ -60,9 +69,11 @@ export default function TransitionsModal({ description, children }) {
       </Modal>
     </div>
   );
-}
+});
 
 TransitionsModal.propTypes = {
   description: PropTypes.string.isRequired,
   children: PropTypes.objectOf(Object).isRequired,
 };
+
+export default TransitionsModal;

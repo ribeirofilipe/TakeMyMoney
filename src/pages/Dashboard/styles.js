@@ -6,6 +6,10 @@ export const Container = styled.div`
 
   width: 100%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const Cards = styled.div`
@@ -14,5 +18,13 @@ export const Cards = styled.div`
 
   h1 {
     color: rgba(0, 0, 0, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+
+    h1 {
+      font-size: 16px;
+    }
   }
 `;

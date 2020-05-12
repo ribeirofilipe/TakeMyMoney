@@ -8,6 +8,15 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
+  @media (max-width: 515px) {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 350px;
+    max-height: 350px;
+    padding-top: 20px;
+  }
+
   max-width: 900px;
   max-height: 190px;
 
@@ -65,7 +74,11 @@ export const Container = styled.div`
             border-radius: 10px;
             border: 0;
             padding: 2px 4px;
-            width: ${(props) => (props.total > 0 ? `${props.total / 2}%` : '10%')}
+            width: ${(props) => (props.total > 0 ? `${props.total / 2}%` : '10%')};
+
+            @media (max-width: 515px) {
+              width: ${(props) => (props.total > 0 ? `${props.total / 2}%` : '40%')};
+            }
           }
         }
       }
@@ -85,6 +98,8 @@ export const Container = styled.div`
       }
     }
   }
+
+
 `;
 
 export const Info = styled.div`
@@ -97,7 +112,7 @@ export const Info = styled.div`
 
   position: relative;
   background: ${(props) => (props.total > 0 ? '#059D42' : '#E14646')};
-  margin-left: 47.5%;
+  margin-left: 42%;
 
   height: 38px;
   width: 260px;
@@ -110,4 +125,12 @@ export const Info = styled.div`
     color: #FFF;
     font-weight: bold;
   }
+
+  @media (max-width: 515px) {
+    margin-left: 32%;
+
+    height: 38px;
+    width: 220px;
+  }
+
 `;

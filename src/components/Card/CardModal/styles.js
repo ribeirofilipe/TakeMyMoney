@@ -5,6 +5,10 @@ export const Container = styled.div`
   width: 25vw;
   height: 30vh;
 
+  @media (max-width: 768px) {
+      width: 70vw;
+  }
+
   header {
     display: flex;
     align-items: center;
@@ -15,6 +19,9 @@ export const Container = styled.div`
     padding: 10px;
     color: #FFF;
 
+    svg {
+      cursor: pointer;
+    }
   }
 
   div {
@@ -35,10 +42,6 @@ export const Container = styled.div`
       font-weight: bold;
       border: 0;
 
-      &:active {
-        border: 1px solid red;
-      }
-
       cursor: pointer;
     }
   }
@@ -48,6 +51,5 @@ export const Container = styled.div`
     border-radius: 0px 0px 5px 5px;
     height: 40px;
     width: 100%;
-
   }
 `;

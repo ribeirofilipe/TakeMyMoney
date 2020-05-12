@@ -13,7 +13,9 @@ const options = [
   { id: 4, value: 125 },
 ];
 
-const CardModal = ({ name, setTotal, total }) => {
+const CardModal = ({
+  handleClose, name, setTotal, total,
+}) => {
   function handleSelectValue(value) {
     if (total + value > 200) {
       alert('Limite atingido.');
@@ -31,7 +33,11 @@ const CardModal = ({ name, setTotal, total }) => {
           {name}
           ]?
         </h4>
-        <AiOutlineClose size={20} color="#FFF" />
+        <AiOutlineClose
+          size={20}
+          color="#FFF"
+          onClick={handleClose}
+        />
       </header>
 
       <div>
@@ -54,6 +60,7 @@ const CardModal = ({ name, setTotal, total }) => {
 export default CardModal;
 
 CardModal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   setTotal: PropTypes.func.isRequired,
   total: PropTypes.number.isRequired,

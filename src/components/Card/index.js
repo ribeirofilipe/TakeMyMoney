@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 
 import PropTypes from 'prop-types';
 import { FiPlus } from 'react-icons/fi';
@@ -13,6 +13,7 @@ import Modal from '../Modal';
 import CardModal from './CardModal';
 
 function Card({ name }) {
+  const childRef = useRef(null);
   const [total, setTotal] = useState(0);
 
   const formattedNumber = useMemo(() => formatNumber(total), [total]);
@@ -43,8 +44,13 @@ function Card({ name }) {
 
             <span>
               <FiPlus size={25} color="#059D42" />
-              <Modal description="Clique aqui para adicionar reais">
-                <CardModal total={total} setTotal={setTotal} name={name} />
+              <Modal ref={childRef} description="Clique aqui para adicionar reais">
+                <CardModal
+                  handleClose={() =>childRef?.current?.handleClose()}
+                  total={total}
+                  setTotal={setTotal}
+                  name={name}
+                />
               </Modal>
             </span>
           </aside>
