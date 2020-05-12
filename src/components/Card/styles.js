@@ -53,14 +53,20 @@ export const Container = styled.div`
           color: #778489;
         }
 
-        input {
-          border-radius: 10px;
-          background: #E9E9E9;
-          border: 0;
-          padding: 2px 4px;
-
-
+        span {
           width: 95%;
+          background: #E9E9E9;
+          border-radius: 10px;
+
+          input {
+            transition: width 0.3s;
+            color: ${(props) => (props.total > 0 ? '#FFF' : '#303030')};
+            background: ${(props) => (props.total > 0 ? '#059D42' : '#E9E9E9')};
+            border-radius: 10px;
+            border: 0;
+            padding: 2px 4px;
+            width: ${(props) => (props.total > 0 ? `${props.total / 2}%` : '10%')}
+          }
         }
       }
 
@@ -90,7 +96,7 @@ export const Info = styled.div`
   z-index: 1;
 
   position: relative;
-  background: #E14646;
+  background: ${(props) => (props.total > 0 ? '#059D42' : '#E14646')};
   margin-left: 47.5%;
 
   height: 38px;
@@ -105,6 +111,3 @@ export const Info = styled.div`
     font-weight: bold;
   }
 `;
-
-
-export const Value = styled.div``;

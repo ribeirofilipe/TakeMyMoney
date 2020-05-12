@@ -1,52 +1,28 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 import { FiPlus } from 'react-icons/fi';
 import miniDollar from '../../assets/mini-dollar.svg';
 import dollar from '../../assets/dollar.svg';
 
+import { Container, Info } from './styles';
 
-import { Container, Info, Value } from './styles';
+import formatNumber from '../../utils/format';
 
 import Modal from '../Modal';
-
-const ModalInfo = ({ name }) => (
-  <Container>
-    <span>
-      <h4>
-        Quantos reais adicionar para [
-        {name}
-        ]?
-      </h4>
-      x
-    </span>
-
-    <Value>
-      R$25,00
-    </Value>
-
-    <Value>
-      R$50,00
-    </Value>
-
-    <Value>
-      R$75,00
-    </Value>
-
-    <Value>
-      R$125,00
-    </Value>
-  </Container>
-);
+import CardModal from './CardModal';
 
 function Card({ name }) {
+  const [total, setTotal] = useState(0);
+
+  const formattedNumber = useMemo(() => formatNumber(total), [total]);
   return (
     <>
-      <Info>
+      <Info total={total}>
         <img src={miniDollar} alt="Grupo Saúde" />
-        <p>Você não adicionou nada</p>
+        <p>{total > 0 ? `Você já adicionou ${formattedNumber}` : 'Você não adicionou nada'}</p>
       </Info>
-      <Container>
+      <Container total={total}>
         <div>
           <img src={dollar} alt="Grupo Saúde" />
 
@@ -57,13 +33,18 @@ function Card({ name }) {
 
             <div>
               <p>Total R$200,00</p>
-              <input placeholder="R$20,00" />
+              <span>
+                <input
+                  onChange={() => {}}
+                  value={formattedNumber}
+                />
+              </span>
             </div>
 
             <span>
               <FiPlus size={25} color="#059D42" />
               <Modal description="Clique aqui para adicionar reais">
-                <ModalInfo name={name} />
+                <CardModal total={total} setTotal={setTotal} name={name} />
               </Modal>
             </span>
           </aside>
@@ -77,7 +58,7 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-ModalInfo.propTypes = {
+CardModal.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
