@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 
 import PropTypes from 'prop-types';
 import { FiPlus } from 'react-icons/fi';
@@ -15,6 +15,17 @@ import CardModal from './CardModal';
 function Card({ name }) {
   const childRef = useRef(null);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const total = localStorage.getItem(`${name}/total`);
+    if (total) {
+      setTotal(JSON.parse(total));
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(`${name}/total`, total);
+  }, [total])
 
   const formattedNumber = useMemo(() => formatNumber(total), [total]);
   return (
@@ -52,6 +63,10 @@ function Card({ name }) {
                   name={name}
                 />
               </Modal>
+              <span
+                onClick={() => setTotal(0)}
+                type="button">Clique aqui para zerar
+              </span>
             </span>
           </aside>
         </div>

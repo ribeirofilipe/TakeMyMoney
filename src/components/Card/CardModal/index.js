@@ -19,10 +19,13 @@ const CardModal = ({
   function handleSelectValue(value) {
     if (total + value > 200) {
       alert('Limite atingido.');
-      return;
     }
 
     setTotal(total + value);
+
+    if (window.screen.width < 515) {
+      handleClose();
+    }
   }
 
   return (
@@ -51,8 +54,6 @@ const CardModal = ({
           </button>
         ))}
       </div>
-
-      <footer />
     </Container>
   );
 };

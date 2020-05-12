@@ -87,13 +87,33 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
 
-        margin-top: 10px;
+        svg {
+          margin-right: 5px;
+        }
 
-        button {
+        button, span {
+          cursor: pointer;
+          text-align: left;
           border: 0;
           background: #FFF;
           color: #059D42;
           font-size: 12px;
+          width: 35%;
+          margin-bottom: 20px;
+
+          @media (max-width: 515px) {
+            width: 60%;
+          }
+        }
+
+        span {
+          @media (max-width: 515px) {
+            width: 40%;
+            margin-top: 20px;
+          }
+
+          width: 25%;
+          margin-top: 10px;
         }
       }
     }
@@ -131,6 +151,7 @@ export const Info = styled.div`
 
     height: 38px;
     width: 220px;
+    padding: 0 10px;
   }
 
 `;

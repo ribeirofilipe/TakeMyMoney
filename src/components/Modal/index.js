@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    marginTop: window.screen.width > 515 ? 0 : `${10}%`,
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
