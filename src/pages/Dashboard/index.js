@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Cards } from './styles';
 
 import Card from '../../components/Card';
 import Sidebar from '../../components/Sidebar';
-import Header from '../../components/Header';
+
+import loading from '../../assets/loading.svg';
+
+import api from '../../services/api';
 
 function Dashboard() {
+  const [employees, setEmployees] = useState([]);
+
+  async function loadEmployees() {
+    const response = await api.get('employees');
+    setEmployees(response.data.data);
+  }
+
+  useEffect(() => {
+    loadEmployees();
+  }, []);
+
   return (
     <Container>
       <Sidebar />
-      <Header />
       <Cards>
         <h1>Pessoas que vão ganhar dinheiro </h1>
-        <Card name="Filipe" />
-        <Card name="Wesley" />
-        <Card name="Fernando" />
+        {employees.length > 0 ? employees.map((employee) => (
+          <Card name={employee.employee_name} />
+        )) : <img src={loading} alt="loading" />}
       </Cards>
 
     </Container>

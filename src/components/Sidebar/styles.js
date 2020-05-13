@@ -7,3 +7,13 @@ export const Container = styled.div`
   height: 100%;
   width: 12%;
 `;
+
+export const Menu = styled.div`
+  margin: 20px 10px;
+
+  div {
+    h2 {
+      color: #FFF;
+    }
+  }
+`;

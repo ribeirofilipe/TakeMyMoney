@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 515px) {
     justify-content: center;
   }
 `;
@@ -20,7 +20,12 @@ export const Cards = styled.div`
     color: rgba(0, 0, 0, 0.7);
   }
 
-  @media (max-width: 768px) {
+  > img {
+    margin: 20px auto;
+    width: 30%;
+  }
+
+  @media (max-width: 515) {
     margin-top: 20px;
 
     h1 {

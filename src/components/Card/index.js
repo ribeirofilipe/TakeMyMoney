@@ -21,11 +21,11 @@ function Card({ name }) {
     if (total) {
       setTotal(JSON.parse(total));
     }
-  }, [])
+  }, [name])
 
   useEffect(() => {
     localStorage.setItem(`${name}/total`, total);
-  }, [total])
+  }, [total, name])
 
   const formattedNumber = useMemo(() => formatNumber(total), [total]);
   return (
@@ -65,7 +65,7 @@ function Card({ name }) {
               </Modal>
               <span
                 onClick={() => setTotal(0)}
-                type="button">Clique aqui para zerar
+                type="button">Zerar
               </span>
             </span>
           </aside>

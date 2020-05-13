@@ -7,6 +7,11 @@ export const Container = styled.div`
 
   width: 100%;
   height: 100%;
+  max-width: 900px;
+  max-height: 190px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  position: relative;
 
   @media (max-width: 515px) {
     display: flex;
@@ -17,13 +22,9 @@ export const Container = styled.div`
     padding-top: 20px;
   }
 
-  max-width: 900px;
-  max-height: 190px;
-
-  border-radius: 4px;
-
-  margin-bottom: 10px;
-  position: relative;
+  @media (max-width: 900px) {
+    max-height: 350px;
+  }
 
   div {
     padding: 20px;
@@ -32,6 +33,7 @@ export const Container = styled.div`
     align-items: flex-start;
 
     img {
+      display: ${window.screen.width > 515 ? '' : 'none'};
       margin-right: 25px;
     }
 
@@ -68,7 +70,7 @@ export const Container = styled.div`
           border-radius: 10px;
 
           input {
-            transition: width 0.3s;
+            transition: width 0.5s;
             color: ${(props) => (props.total > 0 ? '#FFF' : '#303030')};
             background: ${(props) => (props.total > 0 ? '#059D42' : '#E9E9E9')};
             border-radius: 10px;
@@ -102,18 +104,17 @@ export const Container = styled.div`
           margin-bottom: 20px;
 
           @media (max-width: 515px) {
-            width: 60%;
+            width: 80%;
           }
         }
 
         span {
+          width: 10%;
+          margin-top: 10px;
+
           @media (max-width: 515px) {
-            width: 40%;
             margin-top: 20px;
           }
-
-          width: 25%;
-          margin-top: 10px;
         }
       }
     }
@@ -150,7 +151,7 @@ export const Info = styled.div`
     margin-left: 32%;
 
     height: 38px;
-    width: 220px;
+    width: 255px;
     padding: 0 10px;
   }
 
