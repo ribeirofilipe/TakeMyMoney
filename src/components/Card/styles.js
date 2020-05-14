@@ -22,8 +22,16 @@ export const Container = styled.div`
     padding-top: 20px;
   }
 
-  @media (max-width: 900px) {
-    max-height: 350px;
+  @media (max-width: 968px) and (min-width: 600px) {
+    width: 500px;
+    height: 210px;
+
+    max-width: 500px;
+    max-height: 210px;
+  }
+
+  @media (max-height: 768px) and (min-width: 600px) {
+    height: 22vh;
   }
 
   div {
@@ -49,10 +57,15 @@ export const Container = styled.div`
         font-size: 12px;
       }
 
+
       div {
         padding: 0;
         margin-top: 20px;
         width: 100%;
+
+        @media (max-height: 768px) and (min-width: 600px) {
+          margin-top: 17px;
+        }
 
         display: flex;
         flex-direction: column;
