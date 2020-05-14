@@ -31,7 +31,7 @@ export const Container = styled.div`
   }
 
   @media (max-height: 768px) and (min-width: 600px) {
-    height: 22vh;
+    height: 24%;
   }
 
   div {
