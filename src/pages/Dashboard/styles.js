@@ -10,6 +10,7 @@ export const Container = styled.div`
   @media (max-width: 515px) {
     justify-content: center;
   }
+
 `;
 
 export const Cards = styled.div`
@@ -23,6 +24,32 @@ export const Cards = styled.div`
   > img {
     margin: 20px auto;
     width: 30%;
+  }
+
+  span {
+    display: flex;
+    max-width: 900px;
+
+    button  {
+      border: 0;
+      background: #E9EBEE;
+
+      & + p {
+        margin-left: auto;
+        color: #059D42;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+
+      svg {
+        cursor: pointer;
+      }
+    }
+
+    p + button {
+      margin-left: auto;
+    }
   }
 
   @media (max-width: 515) {

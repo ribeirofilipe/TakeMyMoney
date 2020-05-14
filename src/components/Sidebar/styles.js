@@ -6,6 +6,7 @@ export const Container = styled.div`
 
   height: 100%;
   width: 12%;
+  min-width: 200px;
 `;
 
 export const Menu = styled.div`
